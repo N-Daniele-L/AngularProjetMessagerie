@@ -1,0 +1,33 @@
+<div class="container">
+  <form [formGroup]="bureauFormGroup" *ngIf="bureauFormGroup">
+    <div class = "form-group">
+      <label>Id bureau</label>
+      <input type ="text" class="form-control" formControlName="idBureau" readonly>
+    </div>
+    <div class = "form-group">
+      <label>Sigle</label>
+      <input type ="text" class="form-control" formControlName="sigle"
+             [ngClass]="{'is-invalid': submitted &&
+bureauFormGroup.controls['sigle'].errors}">
+      <div *ngIf="submitted && bureauFormGroup.controls['sigle'].errors" class
+        ="invalid-feedback">
+        <div *ngIf="bureauFormGroup.controls['sigle'].errors">
+          Sigle obligatoire
+        </div>
+      </div>
+    </div>
+      <label>Tel</label>
+      <input type ="text" class="form-control" formControlName="tel"
+             [ngClass]="{'is-invalid': submitted &&
+bureauFormGroup.controls['tel'].errors}">
+      <div *ngIf="submitted && bureauFormGroup.controls['tel'].errors" class
+        ="invalid-feedback">
+        <div *ngIf="bureauFormGroup.controls['tel'].errors">
+          Téléphone obligatoire
+        </div>
+      </div>
+    <button (click)="onUpdateClient()" class="btn btn-success">
+      Save
+    </button>
+  </form>
+</div>

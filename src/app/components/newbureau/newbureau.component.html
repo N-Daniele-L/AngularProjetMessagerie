@@ -1,0 +1,15 @@
+<div class="container">
+  <form [formGroup]="bureauFormGroup" *ngIf="bureauFormGroup">
+    <div class = "form-group">
+      <label>Sigle</label>
+      <input type ="text" class="form-control" formControlName="sigle">
+    </div>
+    <div class = "form-group">
+      <label>Tel</label>
+      <input type ="text" class="form-control" formControlName="tel">
+    </div>
+    <button (click)="onSaveBureau()" class="btn btn-success">
+      Save
+    </button>
+  </form>
+</div>

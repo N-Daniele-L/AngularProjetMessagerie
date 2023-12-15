@@ -1,0 +1,30 @@
+<div class="container">
+  <form [formGroup]="employeFormGroup" *ngIf="employeFormGroup">
+    <!--*ngIf permet de n'afficher le formulaire qu'une fois
+   clientFormGroup initialisé dans la classe de contrôle -->
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" class="form-control" formControlName="nom">
+    </div>
+    <div class="form-group">
+      <label>Prénom</label>
+      <input type="text" class="form-control" formControlName="prenom">
+    </div>
+    <div class="form-group">
+      <label>Adresse mail</label>
+      <input type="text" class="form-control" formControlName="mailEmp">
+    </div>
+    <div class="form-group">
+      <label>Bureau</label>
+      <select class="form-control" formControlName="bureau">
+          <option *ngFor="let bur of bureaux" [value]="bur.idBureau">
+            {{bur.sigle}}
+          </option>
+      </select>
+
+    </div>
+    <button (click)="onSaveEmploye()" class="btn btn-success">
+      Save
+    </button>
+  </form>
+</div>

@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light p-2">
+  <ul class="navbar navbar-nav">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="sigle" type="text" >
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+ <span class = "fa fa-search">
+</span>Recherche
+        </button>
+      </form>
+    </li>
+    <li>
+      <button (click)="onNewBureau()" class="btn btn-sm btn-outline-info
+ms-2">New</button>
+    </li>
+  </ul>
+</nav>
+
+<ng-container *ngIf="bureaux"> <!-- bien verifier que le tableau est defini avant de comparer dessus-->
+  <ng-container *ngIf="bureaux.length>0; else inconnu">
+    <table class="table">
+      <thead>
+      <th>IdBureau</th>
+      <th>Sigle</th>
+      <th>Tel</th>
+      <th>Del</th>
+      <th>Edit</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bur of bureaux">
+        <td>{{bur.idBureau}}</td>
+        <td>{{bur.sigle}}</td>
+        <td>{{bur.tel}}</td>
+        <td>
+          <button (click)=onDelete(bur) class="btn btn-danger">
+            <span class = "fa fa-trash-o"></span>
+            Supprimer
+          </button>
+        </td>
+        <td>
+          <button (click)=onEdit(bur) class="btn btn-danger">
+            <span class = "fa fa-edit"></span>
+            Modifier
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Sigle inconnu
+  </ng-template>
+</ng-container>
