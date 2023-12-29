@@ -12,8 +12,7 @@ export class EditbureauComponent {
   bureauFormGroup?: FormGroup;
   submitted = false;
   idBureau: number;
-  constructor(private bureauService: BureauxService,private fb:
-    FormBuilder,activatedRoute : ActivatedRoute) {
+  constructor(private bureauService: BureauxService,private fb: FormBuilder,activatedRoute : ActivatedRoute) {
     this.idBureau= parseInt(activatedRoute.snapshot.params['idBureau']);
   }
   ngOnInit(): void {

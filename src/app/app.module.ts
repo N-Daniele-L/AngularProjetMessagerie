@@ -15,6 +15,8 @@ import { NewemployeComponent } from './components/newemploye/newemploye.componen
 import { EditemployeComponent } from './components/editemploye/editemploye.component';
 import { NewbureauComponent } from './components/newbureau/newbureau.component';
 import { EditbureauComponent } from './components/editbureau/editbureau.component';
+import { EditmessageComponent } from './components/editmessage/editmessage.component';
+import { NewmessageComponent } from './components/newmessage/newmessage.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { EditbureauComponent } from './components/editbureau/editbureau.componen
     NewemployeComponent,
     EditemployeComponent,
     NewbureauComponent,
-    EditbureauComponent
+    EditbureauComponent,
+    EditmessageComponent,
+    NewmessageComponent
   ],
   imports: [
     BrowserModule,

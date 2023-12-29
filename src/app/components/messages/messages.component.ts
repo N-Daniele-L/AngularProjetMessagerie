@@ -4,6 +4,7 @@ import {MessageService} from "../../services/messages.service";
 import {Messages} from "../../entities/message.entities";
 import {Infos} from "../../entities/infos.entities";
 import {InfosServices} from "../../services/infos.services";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-messages',
@@ -51,5 +52,11 @@ export class MessagesComponent {
   }
   onEdit(msg: Messages) {
     this.router.navigateByUrl('editMessage/'+msg.idMess);
+  }
+
+  onRead(inf: Infos) {
+    inf.datelecture = Date.now().toString();
+    this.infosService.update(inf).subscribe();
+    window.location.reload()
   }
 }

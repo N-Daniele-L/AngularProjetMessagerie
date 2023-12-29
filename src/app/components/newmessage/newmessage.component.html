@@ -1,0 +1,36 @@
+<div class="container">
+  <form [formGroup]="messageFormGroup" *ngIf="messageFormGroup">
+    <!--*ngIf permet de n'afficher le formulaire qu'une fois
+   clientFormGroup initialisé dans la classe de contrôle -->
+    <div class="form-group">
+      <label>Votre adresse mail</label>
+      <select class="form-control" formControlName="employe">
+        <option *ngFor="let emp of employes" [value]="emp.idEmploye">
+          {{emp.mailEmp}}
+        </option>
+      </select>
+    <div class="form-group">
+      <label>Objet</label>
+      <input type="text" class="form-control" formControlName="objet">
+    </div>
+    <div class="form-group">
+      <label>Contenu</label>
+      <input type="text" class="form-control" formControlName="contenu">
+    </div>
+      <div class="form-group">
+        <label>Adresse mail du destinataire</label>
+        <select class="form-control" formControlName="receiver">
+          <option *ngFor="let emp of employes" [value]="emp.idEmploye">
+            {{emp.mailEmp}}
+          </option>
+        </select>
+    </div>
+    <button (click)="onSaveBrouillon()" class="btn btn-success">
+      Save Brouillon
+    </button>
+    <button (click)="onSaveMessage()" class="btn btn-success">
+      Envoi du message
+    </button>
+    </div>
+  </form>
+</div>

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Employe} from '../entities/employe.entities';
+import {Infos} from "../entities/infos.entities";
 
 @Injectable({providedIn:"root"})
 export class EmployesService{
@@ -15,6 +16,11 @@ export class EmployesService{
   searchEmployeUnique(nom: string,prenom:string,mail:string): Observable<Employe[]>{
     return this.http.get<Employe[]>(this.host + '/employes/'+nom+'/'+prenom+'/'+mail);
   }
+  searchAll(): Observable<Employe[]>{
+    return this.http.get<Employe[]>(this.host + '/employes/all');
+
+  }
+
   searchEmploye(nom: string): Observable<Employe[]>{
     return this.http.get<Employe[]>(this.host + '/employes/nom=' + nom);
   }

@@ -30,7 +30,7 @@ export class MessageService{
       headers: { 'Access-Control-Allow-Origin': '*' },
     });
   }
-  updateEmploye(msg: Messages): Observable<Messages>{
+  updateMessage(msg: Messages): Observable<Messages>{
     return this.http.put<Messages>(this.host + '/messages/' + msg.idMess, msg);
   }
 }

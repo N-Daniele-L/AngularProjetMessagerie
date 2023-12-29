@@ -1,0 +1,21 @@
+<div class="container">
+    <form [formGroup]="messageFormGroup" *ngIf="messageFormGroup">
+        <!--*ngIf permet de n'afficher le formulaire qu'une fois
+       clientFormGroup initialisé dans la classe de contrôle -->
+        <div class = "form-group">
+            <label>Id Message</label>
+            <input type ="text" class="form-control" formControlName="idMess" readonly>
+        </div>
+        <div class="form-group">
+            <label>Objet</label>
+            <input type="text" class="form-control" formControlName="objet">
+        </div>
+        <div class="form-group">
+            <label>Contenu</label>
+            <input type="text" class="form-control" formControlName="contenu">
+        </div>
+        <button (click)="onUpdateMessage()" class="btn btn-success">
+            Save
+        </button>
+    </form>
+</div>

@@ -22,22 +22,18 @@ ms-2">All</button>
 
 <ng-container *ngIf="messages"> <!-- bien verifier que le tableau est defini avant de comparer dessus-->
   <ng-container *ngIf="messages.length>0; else inconnu">
-    <table class="table">
+<div>
+    <table class="table table-bordered">
       <thead>
-      <th>IdMessage</th>
-      <th>Objet</th>
-      <th>Contenu</th>
-      <th>Email emetteur</th>
-      <th>Date d'envoi</th>
-      <th>Email destinataire</th>
-      <th>Date de réception</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th class="col-1">IdMessage</th>
+      <th class="col-1">Objet</th>
+      <th class="col-2">Contenu</th>
+      <th class="col-2">Email emetteur</th>
+      <th class="col-1">Date d'envoi</th>
 
       </thead>
-      <tbody>
-
-      <tr *ngFor="let msg of messages">
+      <tbody class="table-group-divider" *ngFor="let msg of messages">
+      <tr>
         <td>{{msg.idMess}}</td>
         <td>{{msg.objet}}</td>
         <td>{{msg.contenu}}</td>
@@ -45,34 +41,46 @@ ms-2">All</button>
         <td>{{msg.dateenvoi}}</td>
         <ng-container *ngIf="infos">
           <ng-container *ngFor="let inf of infos">
-            <ng-container *ngIf="inf.message.idMess == msg.idMess; else noinf">
-              <td>{{inf.employe.mailEmp}}</td>
-              <td>{{inf.datelecture}}</td>
+            <ng-container *ngIf="inf.message.idMess == msg.idMess;">
+              <td  class="table-striped-columns col-2" >Infos Destinataire : {{inf.employe.mailEmp}}</td>
+              <td  class="table-striped-columns col-1" >Infos Date de lecture : {{inf.datelecture}}</td>
             </ng-container>
           </ng-container>
         </ng-container>
-        <td>
-          <button (click)=onEdit(msg) class="btn btn-info">
-            <span class = "fa fa-edit"></span>
-            Modifier
-          </button>
-        </td>
-        <td>
-          <button (click)=onDelete(msg) class="btn btn-danger">
-            <span class = "fa fa-trash-o"></span>
-            Supprimer
-          </button>
-        </td>
-      </tr>
+            <td>
+            <button (click)=onEdit(msg) class="btn btn-info">
+              <span class = "fa fa-edit"></span>
+              Modifier
+            </button>
+            </td>
+            <td>
+            <button (click)=onDelete(msg) class="btn btn-danger">
+              <span class = "fa fa-trash-o"></span>
+              Supprimer
+            </button>
+            </td>
+          <ng-container *ngIf="infos">
+              <ng-container *ngFor="let inf of infos">
+                  <ng-container *ngIf="inf.message.idMess == msg.idMess && inf.datelecture == null;">
+                      <td>
+                      <button (click)=onRead(inf) class="btn btn-warning">
+                          <span class="fa fa-envelope-open-o"></span>
+                          Marquer comme lu
+                      </button>
+                      </td>
+                  </ng-container>
+              </ng-container>
+          </ng-container>
+        </tr>
       </tbody>
     </table>
+</div>
   </ng-container>
+
   <ng-template #inconnu>
     Email inconnu/ Aucun message envoyé
   </ng-template>
-  <ng-template #noinf>
-    <td>No value</td>
-  </ng-template>
+
 </ng-container>
 
 
