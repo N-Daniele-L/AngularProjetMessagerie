@@ -30,28 +30,18 @@ export class NewemployeComponent implements OnInit{
 
     }
     onSaveEmploye() {
-
-
-
-
-        // Get the selected Taxi and Adresse objects
+        // Get the selected bureau
         this.bureauService?.getBureau(this.employeFormGroup?.value.bureau).subscribe(bur => {
-
-
           // Replace the id with the entire object
           this.employeFormGroup?.patchValue({
             bureau: bur
           });
-
-
         this.employeService.save(this.employeFormGroup?.value).subscribe(data =>
         {alert('sauvegarde ok');},
             err => {
                 alert(err.headers.get("error"));
             });
-
     });
     };
-
 }
 
