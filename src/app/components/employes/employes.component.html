@@ -5,7 +5,7 @@
         <input ngModel name="nom" type="text" >
         <button class="btn btn-sm btn-outline-info m-lg-2">
  <span class = "fa fa-search">
-</span>Recherche
+</span> Recherche
         </button>
       </form>
     </li>
@@ -19,12 +19,13 @@ ms-2">New</button>
   <ng-container *ngIf="employes.length>0 else inconnu">
     <table class="table">
       <thead>
-      <th>IdEmp</th>
+      <th>Id</th>
       <th>Nom</th>
       <th>Prenom</th>
       <th>Mail</th>
-      <th>Del</th>
+      <th>Bureau</th>
       <th>Edit</th>
+      <th>Delete</th>
       </thead>
       <tbody>
       <tr *ngFor="let emp of employes">
@@ -32,18 +33,20 @@ ms-2">New</button>
         <td>{{emp.nom}}</td>
         <td>{{emp.prenom}}</td>
         <td>{{emp.mailEmp}}</td>
+        <td>{{emp.bureau.sigle}}</td>
+        <td>
+          <button (click)=onEdit(emp) class="btn btn-info">
+            <span class = "fa fa-edit"></span>
+            Modifier
+          </button>
+        </td>
         <td>
           <button (click)=onDelete(emp) class="btn btn-danger">
             <span class = "fa fa-trash-o"></span>
             Supprimer
           </button>
         </td>
-        <td>
-          <button (click)=onEdit(emp) class="btn btn-danger">
-            <span class = "fa fa-edit"></span>
-            Modifier
-          </button>
-        </td>
+
       </tr>
       </tbody>
     </table>

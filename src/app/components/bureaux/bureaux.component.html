@@ -5,13 +5,17 @@
         <input ngModel name="sigle" type="text" >
         <button class="btn btn-sm btn-outline-info m-lg-2">
  <span class = "fa fa-search">
-</span>Recherche
+</span> Recherche
         </button>
       </form>
     </li>
     <li>
       <button (click)="onNewBureau()" class="btn btn-sm btn-outline-info
 ms-2">New</button>
+    </li>
+    <li>
+      <button (click)="allBureau()" class="btn btn-sm btn-outline-info
+ms-2">All</button>
     </li>
   </ul>
 </nav>
@@ -23,8 +27,8 @@ ms-2">New</button>
       <th>IdBureau</th>
       <th>Sigle</th>
       <th>Tel</th>
-      <th>Del</th>
       <th>Edit</th>
+      <th>Delete</th>
       </thead>
       <tbody>
       <tr *ngFor="let bur of bureaux">
@@ -32,15 +36,15 @@ ms-2">New</button>
         <td>{{bur.sigle}}</td>
         <td>{{bur.tel}}</td>
         <td>
-          <button (click)=onDelete(bur) class="btn btn-danger">
-            <span class = "fa fa-trash-o"></span>
-            Supprimer
+          <button (click)=onEdit(bur) class="btn btn-info">
+            <span class = "fa fa-edit"></span>
+            Modifier
           </button>
         </td>
         <td>
-          <button (click)=onEdit(bur) class="btn btn-danger">
-            <span class = "fa fa-edit"></span>
-            Modifier
+          <button (click)=onDelete(bur) class="btn btn-danger">
+            <span class = "fa fa-trash-o"></span>
+            Supprimer
           </button>
         </td>
       </tr>

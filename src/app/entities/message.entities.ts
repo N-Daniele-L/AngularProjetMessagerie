@@ -4,6 +4,6 @@ export interface Messages{
   idMess: number;
   objet: string;
   contenu: string;
-  dateEnvoi: string;
-  sender: Employe;
+  dateenvoi: string;
+  employe: Employe;
 }

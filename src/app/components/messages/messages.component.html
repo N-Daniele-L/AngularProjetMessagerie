@@ -1,1 +1,78 @@
-<p>messages works!</p>
+<nav class="navbar navbar-expand-sm bg-light navbar-light p-2">
+  <ul class="navbar navbar-nav">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="mailEmp" type="text" >
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+ <span class = "fa fa-search">
+</span> Recherche
+        </button>
+      </form>
+    </li>
+    <li>
+      <button (click)="onNewMessage()" class="btn btn-sm btn-outline-info
+ms-2">New</button>
+    </li>
+    <li>
+      <button (click)="allMessage()" class="btn btn-sm btn-outline-info
+ms-2">All</button>
+    </li>
+  </ul>
+</nav>
+
+<ng-container *ngIf="messages"> <!-- bien verifier que le tableau est defini avant de comparer dessus-->
+  <ng-container *ngIf="messages.length>0; else inconnu">
+    <table class="table">
+      <thead>
+      <th>IdMessage</th>
+      <th>Objet</th>
+      <th>Contenu</th>
+      <th>Email emetteur</th>
+      <th>Date d'envoi</th>
+      <th>Email destinataire</th>
+      <th>Date de réception</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let msg of messages">
+        <td>{{msg.idMess}}</td>
+        <td>{{msg.objet}}</td>
+        <td>{{msg.contenu}}</td>
+        <td>{{msg.employe.mailEmp}}</td>
+        <td>{{msg.dateenvoi}}</td>
+        <ng-container *ngIf="infos">
+          <ng-container *ngFor="let inf of infos">
+            <ng-container *ngIf="inf.message.idMess == msg.idMess; else noinf">
+              <td>{{inf.employe.mailEmp}}</td>
+              <td>{{inf.datelecture}}</td>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <td>
+          <button (click)=onEdit(msg) class="btn btn-info">
+            <span class = "fa fa-edit"></span>
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button (click)=onDelete(msg) class="btn btn-danger">
+            <span class = "fa fa-trash-o"></span>
+            Supprimer
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Email inconnu/ Aucun message envoyé
+  </ng-template>
+  <ng-template #noinf>
+    <td>No value</td>
+  </ng-template>
+</ng-container>
+
+

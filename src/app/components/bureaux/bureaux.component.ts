@@ -21,6 +21,11 @@ export class BureauxComponent {
         next: data => {this.bureaux = data;console.log(this.bureaux)}
       });
   }
+  allBureau() {
+    this.bureauxService.searchAll().subscribe({
+      next: data => {this.bureaux = data}
+    })
+  }
   onNewBureau() {
     this.router.navigateByUrl('newBureau');
   }
@@ -40,4 +45,6 @@ export class BureauxComponent {
   onEdit(bur: Bureau) {
     this.router.navigateByUrl('editBureau/'+bur.idBureau);
   }
+
+
 }
