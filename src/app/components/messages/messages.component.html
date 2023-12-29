@@ -43,7 +43,7 @@ ms-2">All</button>
           <ng-container *ngFor="let inf of infos">
             <ng-container *ngIf="inf.message.idMess == msg.idMess;">
               <td  class="table-striped-columns col-2" >Infos Destinataire : {{inf.employe.mailEmp}}</td>
-              <td  class="table-striped-columns col-1" >Infos Date de lecture : {{inf.datelecture}}</td>
+              <td  class="table-striped-columns col-1" >Infos Date de lecture : {{inf.datelecture | date: 'yyyy/MM/dd'}}</td>
             </ng-container>
           </ng-container>
         </ng-container>

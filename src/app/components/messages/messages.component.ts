@@ -55,8 +55,7 @@ export class MessagesComponent {
   }
 
   onRead(inf: Infos) {
-    inf.datelecture = Date.now().toString();
+    inf.datelecture = new Date();
     this.infosService.update(inf).subscribe();
-    window.location.reload()
   }
 }

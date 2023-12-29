@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  host: 'https://APIMessagerie.com'
+  production: false,
+  host: 'http://localhost:5000'
 };
