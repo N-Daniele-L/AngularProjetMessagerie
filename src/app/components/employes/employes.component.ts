@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {EmployesService} from '../../services/employes.service';
 import {Observable} from 'rxjs';
 import {Employe} from '../../entities/employe.entities';
+import {MessageService} from "../../services/messages.service";
 @Component({
   selector: 'app-employes',
   templateUrl: './employes.component.html',
@@ -10,9 +11,13 @@ import {Employe} from '../../entities/employe.entities';
 })
 export class EmployesComponent implements OnInit{
   employes?: Employe[];
-  constructor(private employesService: EmployesService, private router:
+
+
+  constructor(private employesService: EmployesService,private messagesService: MessageService, private router:
     Router) { }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.messagesService.searchAll()
+  }
   onSearch(value: any) {
     this.employesService.searchEmploye(value.nom).subscribe(
       {
@@ -38,5 +43,7 @@ export class EmployesComponent implements OnInit{
   onEdit(emp: Employe) {
     this.router.navigateByUrl('editEmploye/'+emp.idEmploye);
   }
+
+
 }
 

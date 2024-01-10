@@ -24,11 +24,36 @@
         <option *ngFor="let bur of bureaux" [value]="bur.idBureau">
           {{bur.sigle}}
         </option>
+
       </select>
 
+    </div>
+    <div>
+      <label>Before</label>
+      <input #f type="date" class="form-control" formControlName="Dateavant"/>
+      <label>After</label>
+        <input #g type="date" class="form-control" formControlName="Dateapres"/>
+      <button (click)="onSearchBetween(f.value,g.value)" class="btn btn-success">
+        Search Between
+      </button>
+      <ng-container *ngIf="messages">
+        <ng-container *ngIf="(messages.length>0) else inconnu">
+        <span>hello</span>
+        <tbody class="table-group-divider" *ngFor="let msg of messages">
+        <tr>
+          <td>{{msg.idMess}}</td>
+          <td>{{msg.objet}}</td>
+          <td>{{msg.contenu}}</td>
+        </tr>
+
+        </ng-container>
+      </ng-container>
     </div>
     <button (click)="onUpdateClient()" class="btn btn-success">
       Save
     </button>
   </form>
 </div>
+<ng-template #inconnu>
+  inconnu
+</ng-template>

@@ -23,7 +23,15 @@ ms-2">All</button>
 <ng-container *ngIf="messages"> <!-- bien verifier que le tableau est defini avant de comparer dessus-->
   <ng-container *ngIf="messages.length>0; else inconnu">
 <div>
+  <form #g="ngForm" (ngSubmit)="onSearchObject(f.value, g.value)" class="form-inline">
+    <input ngModel name="objet" type="text" >
+    <button class="btn btn-sm btn-outline-info m-lg-2">
+ <span class = "fa fa-search">
+</span> Recherche
+    </button>
+  </form>
     <table class="table table-bordered">
+
       <thead>
       <th class="col-1">IdMessage</th>
       <th class="col-1">Objet</th>

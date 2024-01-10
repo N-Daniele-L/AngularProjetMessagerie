@@ -4,6 +4,8 @@ import {BureauxService} from "../../services/bureaux.service";
 import {ActivatedRoute} from "@angular/router";
 import {EmployesService} from "../../services/employes.service";
 import {Bureau} from "../../entities/bureau.entities";
+import {MessageService} from "../../services/messages.service";
+import {Messages} from "../../entities/message.entities";
 
 @Component({
   selector: 'app-editemploye',
@@ -15,7 +17,8 @@ export class EditemployeComponent {
   submitted = false;
   idEmploye: number;
   bureaux?: Bureau[];
-  constructor(private employeService: EmployesService,private bureauService: BureauxService,private fb:
+  messages?: Messages[];
+  constructor(private employeService: EmployesService,private bureauService: BureauxService, private messagesService: MessageService,private fb:
     FormBuilder,activatedRoute : ActivatedRoute) {
     this.idEmploye= parseInt(activatedRoute.snapshot.params['idEmploye']);
   }
@@ -49,5 +52,12 @@ export class EditemployeComponent {
           alert(err.headers.get("error"));
         });
     })
+  }
+
+  onSearchBetween(avant: any, apres: any) {
+    this.messagesService.getMessageBetween(this.idEmploye,avant.Dateavant,apres.Dateapres).subscribe({
+      next: data => {this.messages = data}
+    })
+
   }
 }

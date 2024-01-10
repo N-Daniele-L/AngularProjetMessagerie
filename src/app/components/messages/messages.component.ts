@@ -27,6 +27,14 @@ export class MessagesComponent {
     this.messagesService.searchMessageBySender(value.mailEmp).subscribe(
       {
         next: data => {this.messages = data;console.log(this.messages)}
+
+      });
+  }
+  onSearchObject(mail: any, objet: any){
+
+    this.messagesService.searchMessageBySenderandObjet(mail.mailEmp,objet.objet).subscribe(
+      {
+        next: data => {this.messages = data;console.log(this.messages)}
       });
   }
   allMessage() {

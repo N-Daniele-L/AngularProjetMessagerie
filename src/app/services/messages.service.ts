@@ -15,8 +15,15 @@ export class MessageService{
   searchAll(): Observable<Messages[]>{
     return this.http.get<Messages[]>(this.host + '/messages/all');
   }
+
+  getMessageBetween(id: number,before: string, after: string): Observable<Messages[]>{
+    return this.http.get<Messages[]>(this.host + '/messages/id='+ id +'/before=' + before + '/after=' + after);
+  }
   searchMessageByObjet(objet: string): Observable<Messages[]>{
     return this.http.get<Messages[]>(this.host + '/messages/objet=' + objet);
+  }
+  searchMessageBySenderandObjet(mail: string,objet: string): Observable<Messages[]>{
+    return this.http.get<Messages[]>(this.host + '/messages/mail=' +mail +'/objet=' + objet);
   }
   searchMessageBySender(mail: string): Observable<Messages[]>{
     return this.http.get<Messages[]>(this.host + '/messages/mail='+ mail )
